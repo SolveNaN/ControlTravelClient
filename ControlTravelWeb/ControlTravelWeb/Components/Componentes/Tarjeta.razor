@@ -1,0 +1,27 @@
+﻿@inject NavigationManager Navigate
+<!-- Hospedaje -->
+<div class="item" @onclick=Navegar style="cursor:pointer">
+    <div class="icon">
+        <img src="@Icono" alt="">
+    </div>
+    <div class="down-content">
+        <h4>@Titulo</h4>
+        <p>@Descripcion</p>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public string? Titulo { get; set; }
+    [Parameter]
+    public string? Descripcion { get; set; }
+    [Parameter]
+    public string? Icono { get; set; }
+    [Parameter]
+    public string? Link { get; set; }
+
+    void Navegar()
+    {
+        Navigate.NavigateTo(Link);
+    }
+}
