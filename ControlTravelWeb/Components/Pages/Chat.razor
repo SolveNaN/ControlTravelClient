@@ -1,11 +1,12 @@
-﻿@page "/chatwasm"
-@using ControWellApp
+﻿@page "/chat"
+@rendermode InteractiveServer
 @using Microsoft.AspNetCore.SignalR.Client
 @inject NavigationManager Navigation
 @implements IAsyncDisposable
-@rendermode InteractiveAuto
-
-
+<PageTitle>Chat</PageTitle>
+<br />
+<br />
+<br />
 <div class="form-group">
     <label>
         User:
@@ -30,7 +31,7 @@
 </ul>
 
 @code {
-    public Connection connection = new Connection();
+    public Connection connection = new Connection(); 
     public HubConnection? hubConnection;
     public List<string> messages = [];
     public string? userInput;
@@ -46,7 +47,7 @@
         {
             var encodedMsg = $"{user}: {message}";
             messages.Add(encodedMsg);
-            InvokeAsync(StateHasChanged);
+            InvokeAsync(StateHasChanged);           
         });
 
         await hubConnection.StartAsync();

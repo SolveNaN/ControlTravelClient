@@ -21,7 +21,7 @@
         public DateTime HoraInicio { get; set; }
         public DateTime HoraFinal { get; set; }
         public int CantidadHoras { get; set; }//Numero de horas que dura el evento si aplica
-        //OPCIONES DE ADMINISTRADOR
+                                              //OPCIONES DE ADMINISTRADOR
         public string? Habilidato { get; set; }//Si o No
                                                //NUEVAS 
         public string? Correo { get; set; }// correo electronico del hotel NUEVO

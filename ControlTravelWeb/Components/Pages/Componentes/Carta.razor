@@ -1,0 +1,46 @@
+﻿@inject NavigationManager Navigate
+
+<!-- Tarjeta Hospedaje -->
+<div class="col-lg-4 templatemo-item-col all imp" @onclick=Navegar style="cursor:pointer">
+    <div class="meeting-item">
+        <div class="thumb">
+            <div class="price">
+                <span>@Precio</span>
+            </div>
+            <a href="meeting-details.html"><img src=@UrlImg alt=""></a>
+        </div>
+        <div class="down-content">
+            <div class="date">
+                <h6>@Direccion <span>@NombreHospedaje</span></h6>
+            </div>
+            <a href="meeting-details.html"><h4>Online Teaching Techniques</h4></a>
+            <p>@Descripcion</p>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public string? NombreHospedaje { get; set; }
+
+    [Parameter]
+    public string? Descripcion { get; set; }
+
+    [Parameter]
+    public string? Precio { get; set; }
+
+    [Parameter]
+    public string? Direccion { get; set; }
+
+    [Parameter]
+    public string? Link { get; set; }
+
+    [Parameter]
+    public string? UrlImg { get; set; }
+
+    void Navegar()
+    {
+        Navigate.NavigateTo(Link);
+    }
+
+}

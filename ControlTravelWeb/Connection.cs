@@ -1,4 +1,4 @@
-﻿namespace ControWellApp
+﻿namespace ControlTravelWeb
 {
     public class Connection
     {
