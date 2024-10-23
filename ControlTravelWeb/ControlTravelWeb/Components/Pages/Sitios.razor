@@ -1,0 +1,149 @@
+﻿@page "/sitios/{Tipo}"
+
+@using ControWellApp
+@using ControlTravelWeb.Components.Pages
+@using ControlTravelWeb.Models
+
+@inject HttpClient Http
+
+<!--inicio plantilla-->
+<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/fontawesome.css">
+<link rel="stylesheet" href="assets/css/templatemo-edu-meeting.css">
+<link rel="stylesheet" href="assets/css/owl.css">
+<link rel="stylesheet" href="assets/css/lightbox.css">
+<!-- Final plantilla -->
+
+<h3>@Tipo</h3>
+<section class="meetings-page" id="meetings">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="filters">
+                            <ul>
+                                <li data-filter="*" class="active">Todos</li>
+                                <li data-filter=".soon">Mas visitados</li>
+                                <li data-filter=".imp">Mas comentados</li>
+                                <li data-filter=".att">Mejor precio</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12">
+                        <div class="row grid">
+                            
+                            @foreach (var item in Unidades)
+                            {
+                                <ControlTravelWeb.Components.Componentes.Carta NombreHospedaje="@item.Nombre" Descripcion="@item.Descripcion1" UrlImg="@item.UrlImg1"/>
+                            }
+                            
+                        </div>
+                       
+                    </div>
+
+
+                    <div class="col-lg-12">
+                        <div class="pagination">
+                            <ul>
+                                <li><a href="#">1</a></li>
+                                <li class="active"><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <p>
+            Copyright © 2022 Edu Meeting Co., Ltd. All Rights Reserved.
+            <br>Design: <a href="https://templatemo.com/page/1" target="_parent" title="website templates">TemplateMo</a>
+        </p>
+    </div>
+</section>
+
+
+<!-- Scripts -->
+<!-- Bootstrap core JavaScript -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<script src="assets/js/isotope.min.js"></script>
+<script src="assets/js/owl-carousel.js"></script>
+<script src="assets/js/lightbox.js"></script>
+<script src="assets/js/tabs.js"></script>
+<script src="assets/js/isotope.js"></script>
+<script src="assets/js/video.js"></script>
+<script src="assets/js/slick-slider.js"></script>
+<script src="assets/js/custom.js"></script>
+
+<script>
+    //according to loftblog tut
+    $('.nav li:first').addClass('active');
+
+    var showSection = function showSection(section, isAnimate) {
+        var
+            direction = section.replace(/#/, ''),
+            reqSection = $('.section').filter('[data-section="' + direction + '"]'),
+            reqSectionPos = reqSection.offset().top - 0;
+
+        if (isAnimate) {
+            $('body, html').animate({
+                scrollTop: reqSectionPos
+            },
+                800);
+        } else {
+            $('body, html').scrollTop(reqSectionPos);
+        }
+
+    };
+
+    var checkSection = function checkSection() {
+        $('.section').each(function () {
+            var
+                $this = $(this),
+                topEdge = $this.offset().top - 80,
+                bottomEdge = topEdge + $this.height(),
+                wScroll = $(window).scrollTop();
+            if (topEdge < wScroll && bottomEdge > wScroll) {
+                var
+                    currentId = $this.data('section'),
+                    reqLink = $('a').filter('[href*=\\#' + currentId + ']');
+                reqLink.closest('li').addClass('active').
+                    siblings().removeClass('active');
+            }
+        });
+    };
+
+    $('.main-menu, .responsive-menu, .scroll-to-section').on('click', 'a', function (e) {
+        e.preventDefault();
+        showSection($(this).attr('href'), true);
+    });
+
+    $(window).scroll(function () {
+        checkSection();
+    });
+</script>
+
+@code {
+    [Parameter]
+    public string Tipo { get; set; }
+
+    Connection connection = new Connection();
+
+    public static List<Unidad> Unidades = new List<Unidad>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        Unidades = await Http.GetFromJsonAsync<List<Unidad>>("https://controltravelservertesting-aqcmajcwa8c9b9e3.canadacentral-01.azurewebsites.net/api/Unidad/Listado");
+
+        Unidades = Unidades.Where(x => x.Tipo == Tipo).ToList();
+    }
+
+
+
+}
