@@ -1,33 +1,69 @@
-﻿@inject NavigationManager Navigate
-
-<!-- Tarjeta Hospedaje -->
-<div class="col-lg-4 templatemo-item-col all imp" @onclick=Navegar style="cursor:pointer">
+﻿@using ControlTravelWeb.Models
+@inject NavigationManager Navigate
+<div class="col-lg-6" style="cursor:pointer" >
     <div class="meeting-item">
+        
         <div class="thumb">
-            <div class="price">
-                <span>@Precio</span>
+            
+            <div class="z-3 position-absolute p-5 rounded-3 price">
+                <span>$@Costo</span>
             </div>
-            <a href="meeting-details.html"><img src=@UrlImg alt=""></a>
+            <div id="@Id" class="carousel slide">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="@UrlImg1" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="@UrlImg3" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="@UrlImg2" class="d-block w-100" alt="...">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#@Id" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#@Id" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
         </div>
-        <div class="down-content">
-            <div class="date">
-                <h6>@Direccion <span>@NombreHospedaje</span></h6>
-            </div>
-            <a href="meeting-details.html"><h4>Online Teaching Techniques</h4></a>
-            <p>@Descripcion</p>
+        <div class="down-content " data-bs-toggle="modal" data-bs-target="#ModalCarta">
+            <a><h4>@Nombre</h4></a>
+            <p>@Descripcion1</p>
+            <br />
+            <p>SubTitulo</p>
         </div>
     </div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="ModalCarta" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        <div class="modal-content">
+            
+               <h3>mi servicio</h3>
+        </div>
+    </div>
+</div>
 @code {
-    [Parameter]
-    public string? NombreHospedaje { get; set; }
+
+    public bool verdetalle = false;
 
     [Parameter]
-    public string? Descripcion { get; set; }
+    public int Id { get; set; }
 
     [Parameter]
-    public string? Precio { get; set; }
+    public string? Nombre { get; set; }
+
+    [Parameter]
+    public string? Descripcion1 { get; set; }
+
+    [Parameter]
+    public string? Costo { get; set; }
 
     [Parameter]
     public string? Direccion { get; set; }
@@ -36,11 +72,14 @@
     public string? Link { get; set; }
 
     [Parameter]
-    public string? UrlImg { get; set; }
+    public string? UrlImg1 { get; set; }
+    [Parameter]
+    public string? UrlImg2 { get; set; }
+    [Parameter]
+    public string? UrlImg3 { get; set; }
 
     void Navegar()
     {
         Navigate.NavigateTo(Link);
     }
-
 }
