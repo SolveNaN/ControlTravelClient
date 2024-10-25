@@ -1454,33 +1454,46 @@ heading page
 ---------------------------------------------
 */
 
+
 section.heading-page {
-  background-image: url(../images/heading-bg.jpg);
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  padding-top: 230px;
-  padding-bottom: 110px;
-  text-align: center;
+    position: relative;
+    padding-top: 230px;
+    padding-bottom: 110px;
+    text-align: center;
+    overflow: hidden; /* Para ocultar la imagen de fondo */
 }
 
-section.heading-page h6 {
-  margin-top: 0px;
-  font-size: 15px;
-  text-transform: uppercase;
-  font-weight: 600;
-  color: #fff;
-  letter-spacing: 1px;
-}
+    section.heading-page::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url(../images/heading-bg.jpg), url(../images/course-02.jpg), url(../images/course-03.jpg);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        opacity: 0.5; /* Ajusta la opacidad según lo desees */
+        animation: backgroundAnimation 12s infinite;
+    }
 
-section.heading-page h2 {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  font-size: 36px;
-  text-transform: uppercase;
-  font-weight: 800;
-  color: #fff;
-  letter-spacing: 1px;
+@keyframes backgroundAnimation {
+    0% {
+        background-image: url(../images/heading-bg.jpg);
+    }
+
+    33% {
+        background-image: url(../images/course-02.jpg);
+    }
+
+    66% {
+        background-image: url(../images/course-03.jpg);
+    }
+
+    100% {
+        background-image: url(../images/heading-bg.jpg);
+    }
 }
 
 
@@ -1828,4 +1841,7 @@ responsive
     color: #1f272b;
   }
 
+
+/***Slider informacion lugar****/
+    
 }

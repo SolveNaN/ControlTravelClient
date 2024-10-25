@@ -1,0 +1,213 @@
+﻿@page "/lugar/{Id}"
+@inject IJSRuntime JSRuntime
+@using ControlTravelWeb.Components.Pages.Componentes
+@using ControlTravelWeb.Models
+@inject HttpClient Http
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+<!--inicio plantilla-->
+<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/fontawesome.css">
+<link rel="stylesheet" href="assets/css/templatemo-edu-meeting.css">
+<link rel="stylesheet" href="assets/css/owl.css">
+<link rel="stylesheet" href="assets/css/lightbox.css">
+<section class="heading-page header-text" id="top">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h6>!BIENVENIDOS¡</h6>
+                <h2>@miunidad.Nombre</h2>
+                <h1>@miunidad.Descripcion1</h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<section class="meetings-page" id="meetingss">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <section class="upcoming-meetings" id="meetingss">
+                            <div class="container">
+                                <div class="row">
+
+                                    <div class="col-lg-12">
+                                        <div class="row">
+                                            @foreach (var item in Servicios)
+                                            {
+                                                <Carta Id="@item.Id" Nombre="@item.Nombre" Descripcion1="@item.Descripcion1" UrlImg1="@item.UrlImg1" UrlImg2="@item.UrlImg2" UrlImg3="@item.UrlImg3" Costo="Costo" />
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="main-button-red">
+                            <a href="meetings.html">Back To Meetings List</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<!-- Footer -->
+<footer id="footer" class="text-center text-lg-start text-white" style="background-color: rgba(146, 159, 186, 0.9); display: none;">
+    <!-- Grid container -->
+    <div class="container p-4 pb-0">
+        <!-- Section: Links -->
+        <section class="">
+            <!--Grid row-->
+            <div class="row">
+                <!-- Grid column -->
+                <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+                    <h6 class="text-uppercase mb-4 font-weight-bold">
+                        @miunidad.Nombre
+                    </h6>
+                    <p>
+                        ¡Descubre la experiencia única en @miunidad.Nombre! Disfruta de nuestras cómodas habitaciones, exquisita gastronomía y atención personalizada. Contáctanos para más información y reserva tu estancia inolvidable.
+                    </p>
+                </div>
+                <!-- Grid column -->
+
+                <hr class="w-100 clearfix d-md-none" />
+
+                <!-- Grid column -->
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                    <h6 class="text-uppercase mb-4 font-weight-bold">Productos</h6>
+                    <p>
+                        <a class="text-white" href="#">Habitaciones</a>
+                    </p>
+                    <p>
+                        <a class="text-white" href="#">Servicios</a>
+                    </p>
+                    <p>
+                        <a class="text-white" href="#">Contacto</a>
+                    </p>
+                </div>
+                <!-- Grid column -->
+
+                <hr class="w-100 clearfix d-md-none" />
+
+                <!-- Grid column -->
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+                    <h6 class="text-uppercase mb-4 font-weight-bold">Contacto</h6>
+                    <p><i class="fas fa-home mr-3"></i> @miunidad.Ubicacion</p>
+                    <p><i class="fas fa-envelope mr-3"></i> @miunidad.Correo </p>
+                    <p><i class="fas fa-phone mr-3"></i> @miunidad.Telefono</p>
+                </div>
+                <!-- Grid column -->
+                <!-- Grid column -->
+                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+                    <h6 class="text-uppercase mb-4 font-weight-bold">Síguenos</h6>
+
+                    <!-- Facebook -->
+                    <a class="btn btn-primary btn-floating m-1" style="background-color: #3b5998" href="@miunidad.LinkFacebook" role="button"><i class="fab fa-facebook-f"></i></a>
+
+                    <!-- Twitter -->
+                    <a class="btn btn-primary btn-floating m-1" style="background-color: #55acee" href="@miunidad.LinkTwiter" role="button"><i class="fab fa-twitter"></i></a>
+
+                    <!-- Instagram -->
+                    <a class="btn btn-primary btn-floating m-1" style="background-color: #ac2bac" href="@miunidad.LinkInstagram" role="button"><i class="fab fa-instagram"></i></a>
+
+                    <!-- Whatsapp -->
+                    <a class="btn btn-primary btn-floating m-1" style="background-color: green" href="@miunidad.linkWhatsapp" role="button"><i class="fab fa-whatsapp"></i></a>
+
+
+
+                </div>
+            </div>
+            <!--Grid row-->
+        </section>
+        <!-- Section: Links -->
+    </div>
+    <!-- Grid container -->
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+        © 2024 Copyright:
+        <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+    </div>
+    <!-- Copyright -->
+</footer>
+
+<style>
+    #footer {
+        display: none; /* Ocultar el pie de página inicialmente */
+        position: fixed; /* Fijar en la parte inferior */
+        left: 0;
+        bottom: 0;
+        width: 100%; /* Ancho completo */
+        background-color: rgba(146, 159, 186, 0.9); /* Fondo semi-transparente */
+        color: white; /* Color del texto */
+        text-align: center; /* Centrar el texto */
+        padding: 15px; /* Espaciado interno */
+        z-index: 1000; /* Asegurar que esté en la parte superior */
+        transition: transform 0.3s ease; /* Transición suave */
+    }
+</style>
+
+<script>
+    let lastScrollTop = 0; // Para rastrear la posición de desplazamiento anterior
+
+    window.onscroll = function () {
+        var footer = document.getElementById("footer");
+        var currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+        if (currentScroll > lastScrollTop && currentScroll > 50) {
+            // Si el usuario se desplaza hacia abajo y está más de 50px del top, mostrar el footer
+            footer.style.display = "block"; // Mostrar pie de página
+            footer.style.transform = "translateY(0)"; // Mover a la posición visible
+        } else {
+            // Si el usuario se desplaza hacia arriba
+            footer.style.transform = "translateY(100%)"; // Mover fuera de la vista
+            setTimeout(() => {
+                footer.style.display = "none"; // Ocultar el pie de página
+            }, 300); // Esperar a que termine la transición
+        }
+        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // Para evitar valores negativos
+    };
+</script>
+
+
+<script src="~/assets/js/backgroundChanger.js"></script>
+
+
+
+@code {
+    [Parameter]
+    public string? Id { get; set; }
+
+
+    Unidad miunidad = new Unidad();
+    Connection connection = new Connection();
+
+    public static List<Servicio> Servicios = new List<Servicio>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        JSRuntime.InvokeVoidAsync("startBackgroundChange");
+        var Nuevo = new List<Servicio>();
+        Servicios = Nuevo;
+        try
+        {
+            Servicios = await Http.GetFromJsonAsync<List<Servicio>>($"https://controltravelservertesting-aqcmajcwa8c9b9e3.canadacentral-01.azurewebsites.net/api/Servicio/ListadoPorUnidad/{Id}");
+            miunidad = await Http.GetFromJsonAsync<Unidad>($"https://controltravelservertesting-aqcmajcwa8c9b9e3.canadacentral-01.azurewebsites.net/api/Unidad/Consultar/{Id}");
+        }catch(Exception e)
+        {
+            Console.WriteLine(e + " Error de Servidor");  
+        }
+        
+    }
+
+
+   
+
+}
+
