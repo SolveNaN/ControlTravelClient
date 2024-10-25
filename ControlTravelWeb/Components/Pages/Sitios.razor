@@ -1,4 +1,5 @@
 ﻿@page "/sitios/{Tipo}"
+@using ControlTravelWeb.Components.Layout
 @using ControlTravelWeb.Components.Pages.Componentes
 @using ControlTravelWeb.Models
 @inject HttpClient Http
@@ -10,6 +11,7 @@
 <link rel="stylesheet" href="assets/css/templatemo-edu-meeting.css">
 <link rel="stylesheet" href="assets/css/owl.css">
 <link rel="stylesheet" href="assets/css/lightbox.css">
+
 <section class="heading-page header-text" id="top">
     <div class="container">
         <div class="row">
@@ -20,14 +22,136 @@
         </div>
     </div>
 </section>
+
 <section class="meetings-page" id="meetingss">
     <div class="container">
         <div class="row">
+
+
+
             <div class="col-lg-12">
+
+
+                <section class="our-facts">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="col-lg-12">
+                                    <h2>Los mejores @Tipo, los mejores precios, visita Acacias.</h2>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div class="row">
+                                    <div class="col-lg-3">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="count-area-content new-students">
+                                                    <div class="count-digit">345</div>
+                                                    <div class="count-title">Hoteles</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="count-area-content new-students">
+                                                    <div class="count-digit">85</div>
+                                                    <div class="count-title">Con restaurante</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="count-area-content new-students">
+                                                    <div class="count-digit">65</div>
+                                                    <div class="count-title">Con parqueadero</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="count-area-content new-students">
+                                                    <div class="count-digit">1345</div>
+                                                    <div class="count-title">Habitaciones</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
+
                 <div class="row">
                     <div class="col-lg-12">
                         <section class="upcoming-meetings" id="meetingss">
                             <div class="container">
+
+
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="col-lg-12">
+                                            <h2>Los mejores @Tipo, los mejores precios, visita Acacias.</h2>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-12">
+                                        <div class="row">
+                                            <div class="col-lg-3">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <div class="count-area-content new-students">
+                                                            <div class="count-digit">345</div>
+                                                            <div class="count-title">Hoteles</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <div class="count-area-content new-students">
+                                                            <div class="count-digit">85</div>
+                                                            <div class="count-title">Con restaurante</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <div class="count-area-content new-students">
+                                                            <div class="count-digit">65</div>
+                                                            <div class="count-title">Con parqueadero</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <div class="count-area-content new-students">
+                                                            <div class="count-digit">1345</div>
+                                                            <div class="count-title">Habitaciones</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
                                 <div class="row">
 
                                     <div class="col-lg-12">
@@ -53,6 +177,7 @@
     </div>
   
 </section>
+
 <!-- Footer -->
 <footer id="footer" class="text-center text-lg-start text-white" style="background-color: rgba(146, 159, 186, 0.9); display: none;">
     <!-- Grid container -->
@@ -132,10 +257,11 @@
     <!-- Copyright -->
 </footer>
 
+<!--
 <style>
     #footer {
         display: none; /* Ocultar el pie de página inicialmente */
-        position: fixed; /* Fijar en la parte inferior */
+        position: fixed/* Fijar en la parte inferior */
         left: 0;
         bottom: 0;
         width: 100%; /* Ancho completo */
@@ -147,7 +273,8 @@
         transition: transform 0.3s ease; /* Transición suave */
     }
 </style>
-
+-->
+<!--
 <script>
     let lastScrollTop = 0; // Para rastrear la posición de desplazamiento anterior
 
@@ -169,7 +296,7 @@
         lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // Para evitar valores negativos
     };
 </script>
-
+-->
 
 
 
