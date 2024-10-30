@@ -1,5 +1,4 @@
-﻿@page "/lugar/{Id}"
-@inject IJSRuntime JSRuntime
+﻿@inject IJSRuntime JSRuntime
 @using ControlTravelWeb.Components.Pages.Componentes
 @using ControlTravelWeb.Models
 @inject HttpClient Http
@@ -11,53 +10,6 @@
 <link rel="stylesheet" href="assets/css/templatemo-edu-meeting.css">
 <link rel="stylesheet" href="assets/css/owl.css">
 <link rel="stylesheet" href="assets/css/lightbox.css">
-<section class="heading-page header-text" id="top">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <h6>!BIENVENIDOS¡</h6>
-                <h2>@miunidad.Nombre</h2>
-                <h1>@miunidad.Descripcion1</h1>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-
-<section class="meetings-page" id="meetingss">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <section class="upcoming-meetings" id="meetingss">
-                            <div class="container">
-                                <div class="row">
-
-                                    <div class="col-lg-12">
-                                        <div class="row">
-                                            @foreach (var item in Servicios)
-                                            {
-                                                <Carta Id="@item.Id" Nombre="@item.Nombre" Descripcion1="@item.Descripcion1" UrlImg1="@item.UrlImg1" UrlImg2="@item.UrlImg2" UrlImg3="@item.UrlImg3" Costo="@item.Valor" />
-                                            }
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="main-button-red">
-                            <a href="meetings.html">Back To Meetings List</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-</section>
 <!-- Footer -->
 <footer class=" fooster text-center text-lg-start text-white">
     <!-- Grid container -->
@@ -75,8 +27,8 @@
                 </div>
 
                 <p class="text-center">
-                        ¡Descubre la experiencia única en @miunidad.Nombre! Recuerda disfrutar de cada uno de los servicios que tenemos disponibles para ti. Contáctanos para más información y reserva tu estancia inolvidable.
-                    </p>
+                    ¡Descubre la experiencia única en @miunidad.Nombre! Recuerda disfrutar de cada uno de los servicios que tenemos disponibles para ti. Contáctanos para más información y reserva tu estancia inolvidable.
+                </p>
             </div>
             <!--Grid column-->
             <!--Grid column-->
@@ -111,14 +63,14 @@
                     <li class="mb-2">
                         <a href="#!" class="text-white"><i class="fas  pe-3"></i>Centro de Entretenimiento</a>
                     </li>
-                   
-                    
+
+
                 </ul>
             </div>
             <!--Grid column-->
             <!--Grid column-->
             <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                
+
 
                 <ul class="list-unstyled">
                     <li class="mb-2">
@@ -202,14 +154,6 @@
 
 
 
-
-
-
-
-<script src="~/assets/js/backgroundChanger.js"></script>
-
-
-
 @code {
     [Parameter]
     public string? Id { get; set; }
@@ -229,15 +173,15 @@
         {
             Servicios = await Http.GetFromJsonAsync<List<Servicio>>($"https://controltravelservertesting-aqcmajcwa8c9b9e3.canadacentral-01.azurewebsites.net/api/Servicio/ListadoPorUnidad/{Id}");
             miunidad = await Http.GetFromJsonAsync<Unidad>($"https://controltravelservertesting-aqcmajcwa8c9b9e3.canadacentral-01.azurewebsites.net/api/Unidad/Consultar/{Id}");
-        }catch(Exception e)
-        {
-            Console.WriteLine(e + " Error de Servidor");  
         }
-        
+        catch (Exception e)
+        {
+            Console.WriteLine(e + " Error de Servidor");
+        }
+
     }
 
 
-   
+
 
 }
-
