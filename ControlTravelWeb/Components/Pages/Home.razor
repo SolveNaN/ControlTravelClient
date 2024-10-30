@@ -1,6 +1,8 @@
 ﻿@page "/"
 @using ControlTravelWeb.Models
 @using ControlTravelWeb.Components.Pages.Componentes
+
+
 <!--inicio plantilla-->
 <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/fontawesome.css">
@@ -10,6 +12,7 @@
 <!-- Final plantilla -->
 
 <PageTitle>Acacías Exp</PageTitle>
+
 <!-- ***** Header Area Start ***** -->
 <header class="header-area header-sticky">
     <div class="container">
@@ -76,10 +79,11 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="owl-service-item owl-carousel">
-                    @foreach (var item in Tarjetas)                    {
-                        
+                    @foreach (var item in Tarjetas)
+                    {
+
                         <Tarjeta Titulo="@item.Titulo" Descripcion="@item.Descripcion" Icono="@item.Icono" Link="@item.Link" />
-                    }                 
+                    }
                 </div>
             </div>
         </div>
@@ -145,7 +149,6 @@
     });
 </script>
 <!-- final plantilla -->
-
 @code {
     public class TarjetaInicio
     {
@@ -158,10 +161,80 @@
     {
         new TarjetaInicio
         {
-            Titulo="Hospedaje",
-            Descripcion="Encuentra los mejores alojamientos en Acacías, Meta, con opciones de reserva directa.",
+            Titulo="Hoteles",
+            Descripcion="Encuentra los mejores hoteles en Acacías, Meta, con opciones de reserva directa.",
             Icono="assets/images/service-icon-01.png",
             Link="/sitios/Hoteles"
+        },
+        new TarjetaInicio
+        {
+            Titulo="Museos",
+            Descripcion="Encuentra los mejores museos en Acacías, Meta, conoce nuestra historia.",
+            Icono="assets/images/service-icon-01.png",
+            Link="/sitios/Museos"
+        },
+        new TarjetaInicio
+        {
+            Titulo="Monumentos",
+            Descripcion="Encuentra los mejores monumentos en Acacías, Meta, conoce nuestra cultura.",
+            Icono="assets/images/service-icon-01.png",
+            Link="/sitios/Monumentos"
+        },
+        new TarjetaInicio
+        {
+            Titulo="Parques y Jardines",
+            Descripcion="Encuentra nuestros hermosos parques y jardines, Acacías, Meta te espera.",
+            Icono="assets/images/service-icon-01.png",
+            Link="/sitios/Parques_Jardines"
+        },
+        new TarjetaInicio
+        {
+            Titulo="Playas",
+            Descripcion="Encuentra nuestras playas y balnearios, visita Acacías, Meta.",
+            Icono="assets/images/service-icon-01.png",
+            Link="/sitios/Playas"
+        },
+        new TarjetaInicio
+        {
+            Titulo="Restaurantes",
+            Descripcion="Ofrecen una variedad de comida casera, de mar y la región.",
+            Icono="assets/images/service-icon-03.png",
+            Link="/sitios/Restaurantes"
+        },
+        new TarjetaInicio
+        {
+            Titulo="Centros culturales",
+            Descripcion="Visita nuestros centros culturales y apropiate de nuestra cultura.",
+            Icono="assets/images/service-icon-03.png",
+            Link="/sitios/Centros_Culturales"
+        },
+        new TarjetaInicio
+        {
+            Titulo="Reservas naturales",
+            Descripcion="Maravillate con los paisajes naturales mas hermosos de la region.",
+            Icono="assets/images/service-icon-03.png",
+            Link="/sitios/Reservas_Naturales"
+        },
+        new TarjetaInicio
+        {
+            Titulo="Centros de entretenimiento",
+            Descripcion="Parcha con amigos, conoce gente en Acacias, Meta.",
+            Icono="assets/images/service-icon-03.png",
+            Link="/sitios/Centros_Entretenimiento"
+        },
+        new TarjetaInicio
+        {
+            Titulo="Sitios religiosos",
+            Descripcion="Sitios destinados para la espiritualidad.",
+            Icono="assets/images/service-icon-03.png",
+            Link="/sitios/Sitios_Religiosos"
+        },
+        new TarjetaInicio
+        {
+            Titulo="Parqueaderos",
+            Descripcion="Encuentra el parqueadero mas cercano y al mejor precio.",
+            Icono="assets/images/service-icon-03.png",
+            Link="/sitios/Parqueaderos"
         },
         new TarjetaInicio
         {
@@ -172,32 +245,32 @@
         },
         new TarjetaInicio
         {
-            Titulo="Sitios Turísticos",
-            Descripcion="Descubre los mejores lugares para visitar en Acacías con reseñas y recomendaciones.",
+            Titulo="Clima",
+            Descripcion="Conoce y disfruta de la variedad de climas que Acacias tiene para ti.",
             Icono="assets/images/service-icon-03.png",
-            Link="/sitios/sitiosturisticosusuario"
+            Link="/sitios/Clima"
         },
         new TarjetaInicio
         {
-            Titulo="Información del Clima",
-            Descripcion="Consulta el clima actual y el pronóstico del tiempo para los próximos días.",
-            Icono="assets/images/service-icon-02.png",
-            Link="/sitios/informacionclimausuario"
+            Titulo="Empresas",
+            Descripcion="Conoce nuestra industria, comercio, encuentra nuestras empresas.",
+            Icono="assets/images/service-icon-03.png",
+            Link="/sitios/Empresas"
         },
         new TarjetaInicio
         {
-            Titulo="Reseñas y Comentarios",
-            Descripcion="Lee opiniones de otros viajeros y deja tus propias reseñas de hospedaje y sitios turísticos.",
+            Titulo="Cultivos",
+            Descripcion="Conoce la gran variedad de cultivos que Acacias, Meta tiene por ofrecerte.",
             Icono="assets/images/service-icon-03.png",
-            Link="/sitios/resenascomentariosusuario"
+            Link="/sitios/Cultivos"
         },
         new TarjetaInicio
         {
-            Titulo="Restaurantes",
-            Descripcion="Ofrecen una variedad de comida casera, de mar y la región.",
+            Titulo="Ganaderia",
+            Descripcion="Conoce de la diversidad de razas y especies del mejor ganado de la region.",
             Icono="assets/images/service-icon-03.png",
-            Link="/sitios/Restaurantes"
-        },
+            Link="/sitios/Ganaderia"
+        }
     };
 
     public static List<Unidad> Unidades = new List<Unidad>
