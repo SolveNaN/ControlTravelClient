@@ -251,9 +251,7 @@
 
     protected override async Task OnInitializedAsync()
     {
-        Unidades = await Http.GetFromJsonAsync<List<Unidad>>("https://controltravelservertesting-aqcmajcwa8c9b9e3.canadacentral-01.azurewebsites.net/api/Unidad/Listado");
-
-        Unidades = Unidades.Where(x => x.Tipo == Tipo).ToList();
+        Unidades = await Http.GetFromJsonAsync<List<Unidad>>($"https://controltravelservertesting-aqcmajcwa8c9b9e3.canadacentral-01.azurewebsites.net/api/Unidad/ListadoPorTipo/{Tipo}");
     }
 
    
