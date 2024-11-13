@@ -6,22 +6,33 @@
                 <nav class="main-nav">
                     <!-- ***** Logo Start ***** -->
                     <a href="index.html" class="logo">
-                        Control Travel
+                        Travel App
                     </a>
                     <!-- ***** Logo End ***** -->
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
                         <li class="scroll-to-section"><a href="#top" class="active">Inicio</a></li>
-                        <li><a href="meetings.html">Meetings</a></li>
-                        <li class="scroll-to-section"><a href="#apply">Apply Now</a></li>
+                        <li><a href="sitios/Hoteles">Hoteleria</a></li>
                         <li class="has-sub">
-                            <a href="javascript:void(0)">Pages</a>
-                            <ul class="sub-menu">
-                                <li><a href="meetings.html">Upcoming Meetings</a></li>
-                                <li><a href="meeting-details.html">Meeting Details</a></li>
+                            <a href="javascript:void(0)">Recreación</a>
+                            <ul class="sub-menu">                                
+                                <li><a href="meeting-details.html">Deporte</a></li>
+                                <li><a href="meeting-details.html">Cultura</a></li>
+                                <li><a href="meeting-details.html">Eventos</a></li>
                             </ul>
                         </li>
-                        <li class="scroll-to-section"><a href="#courses">Courses</a></li>
+                        <li class="has-sub">
+                            <a href="javascript:void(0)">Servicios</a>
+                            <ul class="sub-menu">
+                                <li><a href="sitios/Restaurantes">Restaurante</a></li>
+                                <li><a href="meeting-details.html">Bar</a></li>
+                                <li><a href="meeting-details.html">Cafetería</a></li>
+                                <li><a href="meeting-details.html">Piscina</a></li>
+                                <li><a href="meeting-details.html">Spa</a></li>
+                                <li><a href="meeting-details.html">Transporte</a></li>
+                            </ul>
+                        </li>
+                      
                         <li class="scroll-to-section"><a href="#contact">Contactenos</a></li>
                     </ul>
                     <a class='menu-trigger'>
@@ -39,3 +50,63 @@
 @code {
 
 }
+<!-- ***** Header Area End ***** -->
+<!-- Scripts -->
+<!-- Bootstrap core JavaScript -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<script src="assets/js/isotope.min.js"></script>
+<script src="assets/js/owl-carousel.js"></script>
+<script src="assets/js/lightbox.js"></script>
+<script src="assets/js/tabs.js"></script>
+<script src="assets/js/video.js"></script>
+<script src="assets/js/slick-slider.js"></script>
+<script src="assets/js/custom.js"></script>
+<script>
+    //according to loftblog tut
+    $('.nav li:first').addClass('active');
+
+    var showSection = function showSection(section, isAnimate) {
+        var
+            direction = section.replace(/#/, ''),
+            reqSection = $('.section').filter('[data-section="' + direction + '"]'),
+            reqSectionPos = reqSection.offset().top - 0;
+
+        if (isAnimate) {
+            $('body, html').animate({
+                scrollTop: reqSectionPos
+            },
+                800);
+        } else {
+            $('body, html').scrollTop(reqSectionPos);
+        }
+
+    };
+
+    var checkSection = function checkSection() {
+        $('.section').each(function () {
+            var
+                $this = $(this),
+                topEdge = $this.offset().top - 80,
+                bottomEdge = topEdge + $this.height(),
+                wScroll = $(window).scrollTop();
+            if (topEdge < wScroll && bottomEdge > wScroll) {
+                var
+                    currentId = $this.data('section'),
+                    reqLink = $('a').filter('[href*=\\#' + currentId + ']');
+                reqLink.closest('li').addClass('active').
+                    siblings().removeClass('active');
+            }
+        });
+    };
+
+    $('.main-menu, .responsive-menu, .scroll-to-section').on('click', 'a', function (e) {
+        e.preventDefault();
+        showSection($(this).attr('href'), true);
+    });
+
+    $(window).scroll(function () {
+        checkSection();
+    });
+</script>
